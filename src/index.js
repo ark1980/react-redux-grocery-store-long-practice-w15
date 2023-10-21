@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store";
+import { loadProduce } from "./store/produce";
 import "./index.css";
 import App from "./App";
 
@@ -11,6 +12,7 @@ function Root() {
 
   if (process.env.NODE_ENV !== "production") {
     window.store = store;
+    window.loadProduce = loadProduce;
   }
 
   return (
