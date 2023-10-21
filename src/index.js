@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store";
 import { loadProduce } from "./store/produce";
+import { addToCart } from "./store/cart";
+import { removeFromCart } from "./store/cart";
 import "./index.css";
 import App from "./App";
 
@@ -13,6 +15,8 @@ function Root() {
   if (process.env.NODE_ENV !== "production") {
     window.store = store;
     window.loadProduce = loadProduce;
+    window.addToCart = addToCart;
+    window.removeFromCart = removeFromCart;
   }
 
   return (

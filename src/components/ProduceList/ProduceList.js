@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProduceDetails from "./ProduceDetails";
 import { loadProduce } from "../../store/produce";
 import "./ProduceList.css";

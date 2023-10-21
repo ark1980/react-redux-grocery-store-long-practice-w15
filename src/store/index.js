@@ -5,6 +5,7 @@ import {
   combineReducers,
 } from "redux";
 import produceReducer from "./produce";
+import cartReducer from "./cart";
 
 // `combineReducers` combines all the reducer functions into one big reducer
 // function, which is typically called `rootReducer`. This is the most important
@@ -12,6 +13,7 @@ import produceReducer from "./produce";
 // components.
 const rootReducer = combineReducers({
   produce: produceReducer,
+  cart: cartReducer,
 });
 
 // `enhancer` allows you to alter the store and add functionality such as the
