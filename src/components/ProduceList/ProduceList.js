@@ -1,10 +1,18 @@
-import ProduceDetails from './ProduceDetails';
-import './ProduceList.css';
+import { useEffect } from "react";
+import { UseSelector, useDispatch, useSelector } from "react-redux";
+import ProduceDetails from "./ProduceDetails";
+import { loadProduce } from "../../store/produce";
+import "./ProduceList.css";
 
 function ProduceList() {
-  const produce = {};
-  
-  const produceArr = Object.values(produce);
+  const dispatch = useDispatch();
+
+  const produceList = useSelector((state) => state.produce);
+  const produceArr = Object.values(produceList);
+
+  useEffect(() => {
+    dispatch(loadProduce());
+  }, [dispatch]);
 
   return (
     <>
