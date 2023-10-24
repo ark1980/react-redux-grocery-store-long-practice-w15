@@ -1,5 +1,6 @@
 const ADD_TO_CART = "cart/addToCart";
 const REMOVE_FROM_CART = "cart/removeFromCart";
+const UPDATE_COUNT = "cart/updateCount";
 
 export const addToCart = (id) => ({
   type: ADD_TO_CART,
@@ -9,6 +10,12 @@ export const addToCart = (id) => ({
 export const removeFromCart = (id) => ({
   type: REMOVE_FROM_CART,
   id,
+});
+
+export const updateCount = (id, count) => ({
+  type: UPDATE_COUNT,
+  id,
+  count,
 });
 
 const cartReducer = (state = {}, action) => {
@@ -25,6 +32,14 @@ const cartReducer = (state = {}, action) => {
       const newState = { ...state };
       delete newState[action.id];
       return newState;
+    case UPDATE_COUNT:
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          count: action.count,
+        },
+      };
     default:
       return state;
   }
