@@ -12,11 +12,14 @@ export const removeFromCart = (id) => ({
   id,
 });
 
-export const updateCount = (id, count) => ({
-  type: UPDATE_COUNT,
-  id,
-  count,
-});
+export const updateCount = (id, count) => {
+  if (count < 1) return removeFromCart(id);
+  return {
+    type: UPDATE_COUNT,
+    id,
+    count,
+  };
+};
 
 const cartReducer = (state = {}, action) => {
   switch (action.type) {

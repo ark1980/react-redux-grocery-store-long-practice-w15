@@ -14,7 +14,15 @@ function CartItem({ item }) {
     <li className="cart-item">
       <div className="cart-item-header">{item.name}</div>
       <div className="cart-item-menu">
-        <input type="number" value={count} />
+        <input
+          type="number"
+          value={count}
+          onChange={(e) =>
+            dispatch(
+              updateCount(item.id, (item.count = Number(e.target.value)))
+            )
+          }
+        />
         <button
           className="cart-item-button"
           onClick={() => dispatch(updateCount(item.id, item.count + 1))}
