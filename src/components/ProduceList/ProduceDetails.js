@@ -1,11 +1,17 @@
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, updateCount } from "../../store/cart";
 
 function ProduceDetails({ produce }) {
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
 
   const handleAddToCart = () => {
-    dispatch(addToCart(produce.id));
+    if (cart.hasOwnProperty(produce.id)) {
+      const { count } = cart[produce.id];
+      dispatch(updateCount(produce.id, count + 1));
+    } else {
+      dispatch(addToCart(produce.id));
+    }
   };
 
   const cartItem = {};
