@@ -1,6 +1,7 @@
 const ADD_TO_CART = "cart/addToCart";
 const REMOVE_FROM_CART = "cart/removeFromCart";
 const UPDATE_COUNT = "cart/updateCount";
+const RESET = "cart/reset";
 
 export const addToCart = (id) => ({
   type: ADD_TO_CART,
@@ -20,6 +21,10 @@ export const updateCount = (id, count) => {
     count,
   };
 };
+
+export const reset = () => ({
+  type: RESET,
+});
 
 const cartReducer = (state = {}, action) => {
   switch (action.type) {
@@ -43,6 +48,8 @@ const cartReducer = (state = {}, action) => {
           count: action.count,
         },
       };
+    case RESET:
+      return (state = {});
     default:
       return state;
   }
